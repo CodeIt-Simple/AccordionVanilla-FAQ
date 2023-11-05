@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family="Mulish:400,700&display=swap');
+
+html {
+  font-size: 16px;
+  font-family: "Mulish";
+}
+
+body {
+  background: white;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.questionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 1em;
+}
+
+details {
+  font-size: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #f6faff;
+  border-radius: 8px;
+  position: relative;
+  max-width: 600px;
+  border: 1px solid #c3deff;
+  transition: all 0.3s ease-in-out;
+}
+
+details:hover {
+  border: 1px solid #a4a1ff;
+}
+
+summary {
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    padding: 1em;
+}
+
+summary:hover .question {
+    opacity: 1;
+}
+
+summary::-webkit-details-marker{
+    display: none;
+}
+
+summary:focus{
+    outline: none;
+}
+
+summary:hover .expandIcon{
+    opacity: 1;
+}
+
+.question{
+    opacity: 0;
+    color:#1C2035;
+    width: 90%;
+    opacity: 0.65;
+    transition: all 250ms ease-in-out;
+}
+
+.answer {
+    color:#303651;
+    padding:0.2em 1em 1em 1em;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.expandIcon{
+    opacity: 0.65;
+    pointer-events: none;
+    position: absolute;
+    left: 1em;
+    transition: all 150ms ease-out;
+}
+
