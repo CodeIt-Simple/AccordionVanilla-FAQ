@@ -6,21 +6,104 @@ html {
 }
 
 body {
-  background: white;
-  height: 100%;
+  color: #fff; 
+  background-image: url("./images/1.jpg");
+  background-position: center;
+  background-size: cover;
+height: 100vh;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ol, ul{
+  list-style: none;
+}
+.menu{
+  position: fixed;
+  right: 50px;
+  top: 50px;
+  background-image: url("./images/menu.webp");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 60px;
+  height: 50px;
+  z-index: 99;   
+  cursor: pointer;
+  transition: all .2s;
+}
+nav{
+  position: relative;
+  z-index: 9;
+}
+ul{
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  translate: -50% 50%;
+  opacity: 0;
+  transition: all 0.3s;
+}
+ul li{
+  font-size: 30px;
+  line-height: 35px;
+  margin: 30px 0;
+  cursor: pointer;    
+  position: relative;
+  right: -100%;
+  opacity: 0;    
+  border-bottom: 2px solid transparent;
+  text-align: center;
+}
+ul li:hover{
+  color: #000;
+  border-bottom: 2px solid #000;
 }
 
+.overlay{
+  background-image: linear-gradient(to left, #fffbd5, #b20a2c);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+  opacity: 0;
+}
+body.open .menu{
+  background-image: url("./images/close.png");
+  background-size: 80%;
+}
+body.open ul{
+  opacity: 1;
+}
+body.open ul li{
+  transition: all 0.5s;
+  animation: moveLi 1s 0.4s both;
+}
+body.open .overlay{
+ animation: showOverlay 0.5s both;
+}
+.overlay{
+  animation: hideOverlay 0.5s both;
+}
+
+
+  
 .questionContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin-top: 1em;
 }
 
+.visible{
+  display: none;
+}
 details {
   font-size: 1rem;
   margin: 0 auto;
@@ -86,3 +169,37 @@ summary:hover .expandIcon{
     transition: all 150ms ease-out;
 }
 
+@keyframes showOverlay {
+  0%{
+      width: 50%;
+      height: 50%;
+      opacity: 1;
+  }
+  100%{
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+  }
+}
+@keyframes hideOverlay {
+  0%{
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+  }
+  100%{
+      width: 0;
+      height: 0;
+      opacity: 0;
+  }
+}
+@keyframes moveLi {
+  0%{
+      left: -100%;
+      opacity: 0;
+  }
+  100%{
+      left: 0;
+      opacity: 1;
+  }
+}

@@ -1,3 +1,9 @@
+const menu = document.querySelector(".menu");
+const allAcordions = document.querySelectorAll("details");
+menu.addEventListener("click", () => {
+  allAcordions.forEach(acc => acc.classList.toggle("visible"))
+  document.body.classList.toggle("open")
+});
 class Accordion {
   constructor(element) {
     this.element = element;
@@ -61,11 +67,12 @@ class Accordion {
       { duration: 350, easing: "ease-out" }
     );
     this.animation.onfinish = () => {
-      this.expandIcon.setAttribute("src", "./images/minus.svg");
+      console.log('1')
+      this.expandIcon.setAttribute("src", "images/minus.svg");
       return this.onAnimationFinish(true);
     };
     this.animation.onCancel = () => {
-      this.expandIcon.setAttribute("src", "./images/minus.svg");
+      this.expandIcon.setAttribute("src", "images/minus.svg");
       return (this.isExpanding = false);
     };
   }
@@ -79,4 +86,4 @@ class Accordion {
   }
 
 }
-document.querySelectorAll("details").forEach((el) => new Accordion(el))
+allAcordions.forEach((el) => new Accordion(el))
